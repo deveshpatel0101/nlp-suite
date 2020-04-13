@@ -1,7 +1,7 @@
 {
   "name": "nlp-suite-frontend",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "engines": {
     "node": "12.15.0",
     "npm": "6.13.4"
