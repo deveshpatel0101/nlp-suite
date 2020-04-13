@@ -1,0 +1,194 @@
+.Home-Header {
+  border-bottom: 1px solid #d3d1d1;
+  background-color: #f1f1f1;
+  height: 10vh;
+  box-shadow: 3px 4px 20px 3px #ebeaea;
+  display: flex;
+  align-items: center;
+}
+
+.Home-Header-Name {
+  margin-left: 5%;
+  font-size: 200%;
+}
+
+.Home-First {
+  margin: 8% 0 0 5%;
+  text-align: left;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+  color: rgb(61, 63, 65);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+    'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 380%;
+  font-weight: 300;
+}
+
+.Home-First-Left {
+  margin-top: 15px;
+  width: 550px;
+  display: flex;
+  flex-direction: column;
+}
+
+.Home-First-Left a {
+  text-decoration: none;
+}
+
+.Home-Second {
+  margin: 0 5%;
+  display: flex;
+  flex-direction: row;
+  width: 75vw;
+  justify-content: space-between;
+  margin-top: -5%;
+  font-size: 45%;
+  color: rgb(80, 81, 82);
+  font-weight: 400;
+}
+
+.Home-Second-left {
+  margin-bottom: 25px;
+}
+
+.Home-Third {
+  margin: 50px 0 5px 0;
+  background-color: #f8f8fa;
+  width: 100%;
+  height: 60vh;
+}
+
+.Home-Third-Header {
+  padding: 10px 0 0 0;
+  text-align: center;
+  color: rgb(106, 106, 107);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+    'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 300%;
+  font-weight: 350;
+}
+
+.Home-Fourth {
+  margin: 0 0 10px 0;
+  width: 100%;
+}
+
+.Home-Fourth-Header {
+  padding: 10px 0 0 0;
+  text-align: center;
+  color: rgb(106, 106, 107);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+    'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 300%;
+  font-weight: 350;
+}
+
+.Home-Fourth-Work {
+  display: flex;
+  margin: 0 auto;
+  flex: 1;
+  width: 90%;
+  justify-content: space-between;
+}
+
+.Home-Fourth-Work-Text {
+  font-size: 22px;
+  padding-left: 25px;
+  text-align: justify;
+  color: #88888b;
+}
+
+.Home-Fourth-Work-Container img {
+  width: 100%;
+  height: 100%;
+  box-shadow: -1px 2px 8px 0px rgba(0, 0, 0, 0.15);
+}
+.Home-Fifth {
+  margin: 20px 0 10px 0;
+  padding: 0 0 20px 0;
+  background-color: #f8f8fa;
+  width: 100%;
+}
+.Home-Fifth-Header {
+  margin: 10px 0 0 0;
+  text-align: center;
+  color: rgb(106, 106, 107);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+    'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 300%;
+  font-weight: 350;
+}
+
+.Laptop-Screen img {
+  margin-top: -14%;
+  width: 45vw;
+  height: 80vh;
+}
+
+.Home-Fifth-Work {
+  margin: 10px 0 0 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.Home-Fifth-Work-Container {
+  display: flex;
+  flex: 1;
+  width: 90%;
+  margin: 20px auto 0 auto;
+  justify-content: space-between;
+  color: #88888b;
+  font-size: 22px;
+  font-weight: 200;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+    'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.Home-Fifth-Work-Image img {
+  max-width: 100%;
+  max-height: 100%;
+  box-shadow: -1px 2px 8px 0px rgba(0, 0, 0, 0.15);
+}
+
+.Work-Steps {
+  text-align: left;
+  margin: 0 25px 0 0;
+}
+
+.Home-Fifth hr {
+  background-color: rgb(252, 186, 64);
+  border: none;
+}
+
+.Home-Third hr {
+  background-color: rgb(55, 151, 241);
+  border: none;
+  align-items: center;
+}
+
+.Home-Fourth hr {
+  background-color: rgb(19, 199, 130);
+  border: none;
+  align-items: center;
+}
+
+.Header-Login-Button a,
+.Header-Signup-Button a {
+  text-decoration: none;
+}
+
+.Header-Login-Button {
+  margin-left: 60%;
+  margin-right: 2%;
+}
+
+.Header-Signup-Button button {
+  color: white;
+  background-color: rgb(211, 98, 98);
+}
+
+.Header-Signup-Button button:hover {
+  background-color: rgb(199, 71, 71);
+}

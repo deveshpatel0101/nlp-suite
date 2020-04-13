@@ -1,0 +1,39 @@
+.Project-Card {
+  width: 85%;
+  margin: 1% auto;
+  background-color: #f8f8f8 !important;
+}
+
+.Project-Card-Header,
+.Project-Card-Date {
+  text-align: left;
+}
+
+.Project-Card-Header {
+  margin-top: 2%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Project-Card-Icons>div {
+  display: inline;
+  margin: 0 5px;
+}
+
+.Project-Card-Icons>div>button>span>svg {
+  font-size: 1.3em;
+}
+
+.Project-Card-Expand-Button,
+.Project-Card-Compress-Button {
+  margin-top: 15px;
+}
+
+.Project-Card-Date {
+  margin-top: 2%;
+}
+
+.Project-Card-Details-Container {
+  margin-top: 30px;
+  text-align: left;
+}

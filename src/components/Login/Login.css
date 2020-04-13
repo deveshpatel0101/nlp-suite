@@ -1,0 +1,28 @@
+.Signin-Container {
+  display: flex;
+  height: 75vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.Signin-Form-Container {
+  margin-top: 20px;
+  width: 15em;
+}
+
+.Signin-Email div,
+.Signin-Password div,
+.Signin-Button button {
+  width: 100%;
+}
+
+.Signin-Button {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.Signin-Forget:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
