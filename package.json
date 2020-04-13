@@ -2,6 +2,10 @@
   "name": "nlp-suite-frontend",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "12.15.0",
+    "npm": "6.13.4"
+  },
   "dependencies": {
     "@material-ui/core": "^4.9.10",
     "@material-ui/icons": "^4.9.1",
