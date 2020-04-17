@@ -7,6 +7,7 @@ export const userLogin = (data) => ({
   accountType: data.accountType,
   fname: data.fname,
   lname: data.lname,
+  isVerified: data.isVerified,
 });
 
 export const userSignUp = () => ({

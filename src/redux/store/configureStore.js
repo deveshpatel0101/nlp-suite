@@ -6,7 +6,7 @@ import projectReducer from '../reducers/projects';
 export default () => {
   const store = createStore(
     combineReducers({
-      auth: authReducer,
+      user: authReducer,
       message: messageReducer,
       projects: projectReducer,
     }),

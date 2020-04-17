@@ -5,7 +5,7 @@ import './App.css';
 import Login from './components/Login/Login';
 import Home from './components/Home/Home';
 import Footer from './components/Footer/Footer';
-import SignUp from './components/SignUp/SignUp';
+import Register from './components/Register/Register';
 import Dashboard from './components/Dashboard/Dashboard';
 import Navbar from './components/Navbar/Navbar';
 import DisplaySnackBar from './components/DisplaySnackBar/DisplaySnackBar';
@@ -27,20 +27,20 @@ class App extends Component {
               exact={true}
             />
             <Route
-              path='/user/signup'
+              path='/user/register'
               render={() => (
                 <Fragment>
-                  <Navbar route='signup' />
-                  <SignUp />
+                  <Navbar route='register' />
+                  <Register />
                 </Fragment>
               )}
               exact={true}
             />
             <Route
-              path='/user/signin'
+              path='/user/login'
               render={() => (
                 <Fragment>
-                  <Navbar route='signin' />
+                  <Navbar route='login' />
                   <Login />
                 </Fragment>
               )}

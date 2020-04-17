@@ -15,6 +15,7 @@ export default (state = authReducerDefaultState, action) => {
         accountType: action.accountType,
         fname: action.fname,
         lname: action.lname,
+        isVerified: action.isVerified,
       };
     case 'LOGGED_OUT':
       localStorage.removeItem('jwt');

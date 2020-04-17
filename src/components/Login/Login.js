@@ -6,6 +6,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import './Login.css';
 
 import { signin } from '../../controllers/signin';
+import { pushProject } from '../../redux/actions/projects';
 import { getProjects } from '../../controllers/projects';
 import { userLogin } from '../../redux/actions/auth';
 
@@ -76,6 +77,8 @@ class Login extends Component {
       signin(data).then((res) => {
         if (!res.error) {
           localStorage.setItem('jwt', res.jwtToken);
+          this.props.dispatch(pushProject(res.results.projects));
+          this.props.dispatch(userLogin({ ...res.results.userData }));
           this.setState({ redirect: true });
         } else {
           if (res.errorType === 'email') {
@@ -101,7 +104,8 @@ class Login extends Component {
       if (jwt) {
         getProjects(jwt).then((res) => {
           if (!res.error) {
-            this.props.dispatch(userLogin({...res.userData}));
+            this.props.dispatch(pushProject(res.results.projects));
+            this.props.dispatch(userLogin({ ...res.results.userData }));
             this.setState({ redirect: true });
           } else {
             this.setState({ validating: false });
@@ -128,7 +132,7 @@ class Login extends Component {
           <LockOutlinedIcon />
         </div>
         <div className='Signin-Header'>
-          <Typography variant='h5'>Sign in</Typography>
+          <Typography variant='h5'>Login</Typography>
         </div>
         <div className='Signin-Form-Container'>
           <form noValidate onSubmit={this.handleSubmit}>
@@ -195,7 +199,7 @@ class Login extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return state.auth;
+  return { auth: state.user.auth };
 };
 
 export default connect(mapStateToProps)(Login);

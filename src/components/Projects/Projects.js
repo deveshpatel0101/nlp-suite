@@ -40,7 +40,7 @@ class Projects extends Component {
           this.props.projects.map((item, index) => {
             return (
               <div key={index}>
-                <ProjectCard { ...item } />
+                <ProjectCard {...item} />
               </div>
             );
           })
@@ -71,7 +71,7 @@ class Projects extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return { projects: state.projects };
+  return { projects: state.projects, isVerified: state.isVerified };
 };
 
 export default connect(mapStateToProps)(Projects);

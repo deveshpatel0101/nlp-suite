@@ -203,7 +203,7 @@ class CreateProjectModal extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    auth: state.auth.auth,
+    auth: state.user.auth,
     projects: state.projects,
   };
 };

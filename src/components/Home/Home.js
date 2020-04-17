@@ -19,7 +19,7 @@ class Home extends Component {
             <div className='Home-First-Left'>
               Do your best work,all in one suite.
               <div>
-                <Link to='user/signup'>
+                <Link to='user/register'>
                   <Button variant='contained' size='large' color='primary'>
                     Free Trial
                   </Button>

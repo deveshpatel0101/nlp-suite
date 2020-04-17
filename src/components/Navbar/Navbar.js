@@ -79,15 +79,15 @@ class Navbar extends Component {
             )}
             {!this.props.auth && (
               <div className='Header-SignIn-SignUp-Buttons'>
-                {(this.props.route === 'signup' || this.props.route === 'home') && (
-                  <Link to='/user/signin'>
-                    <Button size='small'>Sign in</Button>
+                {(this.props.route === 'register' || this.props.route === 'home') && (
+                  <Link to='/user/login'>
+                    <Button size='small'>Login</Button>
                   </Link>
                 )}
 
-                {(this.props.route === 'signin' || this.props.route === 'home') && (
-                  <Link to='/user/signup'>
-                    <Button size='small'>Sign up</Button>
+                {(this.props.route === 'login' || this.props.route === 'home') && (
+                  <Link to='/user/register'>
+                    <Button size='small'>Register</Button>
                   </Link>
                 )}
               </div>
@@ -101,8 +101,8 @@ class Navbar extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    auth: state.auth.auth,
-    fname: state.auth.fname,
+    auth: state.user.auth,
+    fname: state.user.fname,
   };
 };
 

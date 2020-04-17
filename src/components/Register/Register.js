@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Typography, TextField, Button, CircularProgress } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { Link } from 'react-router-dom';
-import './SignUp.css';
+import './Register.css';
 
 import { signup } from '../../controllers/signup';
 import { userLogin } from '../../redux/actions/auth';
@@ -17,7 +17,7 @@ const emailRegex = RegExp(
 
 const passwordRegex = RegExp(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{4,}$/);
 
-class SignUp extends Component {
+class Register extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -226,7 +226,7 @@ class SignUp extends Component {
           <LockOutlinedIcon />
         </div>
         <div className='Signup-Header'>
-          <Typography variant='h5'>Sign up</Typography>
+          <Typography variant='h5'>Register</Typography>
         </div>
         <div className='Form-Container'>
           <form className='Signup-Form' onSubmit={this.handleSubmit} noValidate>
@@ -331,14 +331,14 @@ class SignUp extends Component {
                     &nbsp;Trying to log you in
                   </Fragment>
                 ) : (
-                  'Sign Up'
+                  'Submit'
                 )}
               </Button>
             </div>
 
             <Typography color='primary' variant='body1'>
-              <Link to='./signin' className='Signup-Forget'>
-                Already have an account? Sign in
+              <Link to='./login' className='Signup-Forget'>
+                Already have an account? Login
               </Link>
             </Typography>
           </form>
@@ -349,7 +349,7 @@ class SignUp extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return state.auth;
+  return { auth: state.user.auth };
 };
 
-export default connect(mapStateToProps)(SignUp);
+export default connect(mapStateToProps)(Register);
