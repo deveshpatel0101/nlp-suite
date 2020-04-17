@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Snackbar, SnackbarContent } from '@material-ui/core';
-import ErrorIcon from '@material-ui/icons/Error';
 import './DisplaySnackBar.css';
 
 import { clearMessages } from '../../redux/actions/message';
@@ -29,12 +28,8 @@ class DisplaySnackBar extends React.Component {
               className='Success-Message-Snack-Bar'
               message={
                 <div>
-                  <span>
-                    {this.handleTimeOut()}
-                    <ErrorIcon />
-                    &nbsp;&nbsp;
-                  </span>
-                  <span>{successMessage}</span>
+                  {this.handleTimeOut()}
+                  {successMessage}
                 </div>
               }
             />
@@ -52,12 +47,8 @@ class DisplaySnackBar extends React.Component {
               className='Error-Message-Snack-Bar'
               message={
                 <div>
-                  <span>
-                    {this.handleTimeOut()}
-                    <ErrorIcon />
-                    &nbsp;&nbsp;
-                  </span>
-                  <span>{errorMessage}</span>
+                  {this.handleTimeOut()}
+                  {errorMessage}
                 </div>
               }
             />
