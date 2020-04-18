@@ -7,7 +7,6 @@ import './Login.css';
 
 import { signin } from '../../controllers/signin';
 import { pushProject } from '../../redux/actions/projects';
-import { getProjects } from '../../controllers/projects';
 import { userLogin } from '../../redux/actions/auth';
 
 const emailRegex = RegExp(
@@ -23,7 +22,7 @@ class Login extends Component {
       errorMessageEmail: '',
       errorMessagePassword: '',
       redirect: false,
-      validating: true,
+      validating: false,
       whiteLoader: false,
     };
   }
@@ -93,29 +92,6 @@ class Login extends Component {
       });
     }
   };
-
-  componentDidMount() {
-    const { auth } = this.props;
-    if (auth) {
-      this.setState({ redirect: true });
-    } else {
-      // validate jwt token from local storage if exists.
-      const jwt = localStorage.getItem('jwt');
-      if (jwt) {
-        getProjects(jwt).then((res) => {
-          if (!res.error) {
-            this.props.dispatch(pushProject(res.results.projects));
-            this.props.dispatch(userLogin({ ...res.results.userData }));
-            this.setState({ redirect: true });
-          } else {
-            this.setState({ validating: false });
-          }
-        });
-      } else {
-        this.setState({ validating: false });
-      }
-    }
-  }
 
   render() {
     const isDisabled = this.isDisabled();
@@ -198,8 +174,8 @@ class Login extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return { auth: state.user.auth };
+const mapStateToProps = () => {
+  return {};
 };
 
 export default connect(mapStateToProps)(Login);

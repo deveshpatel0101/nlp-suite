@@ -7,8 +7,8 @@ import Home from './components/Home/Home';
 import Footer from './components/Footer/Footer';
 import Register from './components/Register/Register';
 import Dashboard from './components/Dashboard/Dashboard';
-import Navbar from './components/Navbar/Navbar';
 import DisplaySnackBar from './components/DisplaySnackBar/DisplaySnackBar';
+import CheckAuth from './components/Auth/Auth';
 
 class App extends Component {
   render() {
@@ -26,35 +26,9 @@ class App extends Component {
               )}
               exact={true}
             />
-            <Route
-              path='/user/register'
-              render={() => (
-                <Fragment>
-                  <Navbar route='register' />
-                  <Register />
-                </Fragment>
-              )}
-              exact={true}
-            />
-            <Route
-              path='/user/login'
-              render={() => (
-                <Fragment>
-                  <Navbar route='login' />
-                  <Login />
-                </Fragment>
-              )}
-              exact={true}
-            />
-            <Route
-              path='/dashboard'
-              render={() => (
-                <Fragment>
-                  <Dashboard />
-                </Fragment>
-              )}
-              exact={true}
-            />
+            <Route path='/user/register' component={CheckAuth(Register, 'register')} exact={true} />
+            <Route path='/user/login' component={CheckAuth(Login, 'login')} exact={true} />
+            <Route path='/dashboard' component={CheckAuth(Dashboard)} exact={true} />
           </Switch>
         </BrowserRouter>
         <DisplaySnackBar />

@@ -7,9 +7,7 @@ import { Link } from 'react-router-dom';
 import './Register.css';
 
 import { signup } from '../../controllers/signup';
-import { userLogin } from '../../redux/actions/auth';
 import { successMessage, errorMessage } from '../../redux/actions/message';
-import { getProjects } from '../../controllers/projects';
 
 const emailRegex = RegExp(
   /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
@@ -27,7 +25,6 @@ class Register extends Component {
       password: '',
       confirmPassword: '',
       validating: false,
-      verifying: false,
       redirect: '',
       whiteLoader: false,
       errorMessageFirstName: '',
@@ -157,7 +154,7 @@ class Register extends Component {
     signup(data).then((data) => {
       if (!data.error) {
         this.props.dispatch(successMessage('Signup Successful! You can now login.'));
-        this.setState({ redirect: 'login' });
+        this.setState({ redirect: true });
       } else {
         this.setState({ validating: false });
         if (data.errorType === 'fname') {
@@ -177,29 +174,6 @@ class Register extends Component {
     });
   };
 
-  componentDidMount() {
-    const { auth } = this.props;
-    if (auth) {
-      this.setState({ redirect: 'dashboard' });
-    } else {
-      // validate jwt token from local storage if exists.
-      const jwt = localStorage.getItem('jwt');
-      this.setState({ verifying: true });
-      if (jwt) {
-        getProjects(jwt).then((res) => {
-          if (!res.error) {
-            this.props.dispatch(userLogin({}));
-            this.setState({ redirect: 'dashboard' });
-          } else {
-            this.setState({ verifying: false });
-          }
-        });
-      } else {
-        this.setState({ verifying: false });
-      }
-    }
-  }
-
   render() {
     let isDisabled = this.checkDisabled();
     const {
@@ -209,15 +183,12 @@ class Register extends Component {
       errorMessagePassword,
       errorMessageConfirmPassword,
       validating,
-      verifying,
       redirect,
       whiteLoader,
     } = this.state;
 
-    if (redirect === 'dashboard') {
-      return <Redirect to='/dashboard' />;
-    } else if (redirect === 'login') {
-      return <Redirect to='/user/signin' />;
+    if (redirect) {
+      return <Redirect to='/user/login' />;
     }
 
     return (
@@ -233,7 +204,7 @@ class Register extends Component {
             <div className='Name'>
               <div className='Firstname'>
                 <TextField
-                  label='Firstname'
+                  label='Firstname *'
                   name='firstName'
                   margin='dense'
                   variant='outlined'
@@ -246,7 +217,7 @@ class Register extends Component {
 
               <div className='Lastname'>
                 <TextField
-                  label='Lastname'
+                  label='Lastname *'
                   name='lastName'
                   margin='dense'
                   variant='outlined'
@@ -260,7 +231,7 @@ class Register extends Component {
 
             <div className='Email'>
               <TextField
-                label='Email Id'
+                label='Email *'
                 type='email'
                 name='email'
                 margin='dense'
@@ -275,7 +246,7 @@ class Register extends Component {
 
             <div className='Password'>
               <TextField
-                label='Password'
+                label='Password *'
                 type='password'
                 name='password'
                 margin='dense'
@@ -290,7 +261,7 @@ class Register extends Component {
 
             <div className='Confirm-Password'>
               <TextField
-                label='Confirm Password'
+                label='Confirm Password *'
                 type='password'
                 name='confirmPassword'
                 margin='dense'
@@ -320,15 +291,6 @@ class Register extends Component {
                       style={whiteLoader ? { color: 'white' } : {}}
                     />
                     &nbsp;Signing up
-                  </Fragment>
-                ) : verifying ? (
-                  <Fragment>
-                    <CircularProgress
-                      size={24}
-                      thickness={5}
-                      style={whiteLoader ? { color: 'white' } : {}}
-                    />
-                    &nbsp;Trying to log you in
                   </Fragment>
                 ) : (
                   'Submit'
