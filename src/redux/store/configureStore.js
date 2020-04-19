@@ -1,12 +1,12 @@
 import { createStore, combineReducers } from 'redux';
-import authReducer from '../reducers/auth';
+import userReducer from '../reducers/user';
 import messageReducer from '../reducers/message';
 import projectReducer from '../reducers/projects';
 
 export default () => {
   const store = createStore(
     combineReducers({
-      user: authReducer,
+      user: userReducer,
       message: messageReducer,
       projects: projectReducer,
     }),

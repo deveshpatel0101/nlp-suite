@@ -16,7 +16,7 @@ import './CreateProjectModal.css';
 
 import { addProject } from '../../controllers/projects';
 import { setProjects } from '../../redux/actions/projects';
-import { userLogOut } from '../../redux/actions/auth';
+import { userLogOut } from '../../redux/actions/user';
 import { errorMessage } from '../../redux/actions/message';
 
 class CreateProjectModal extends Component {

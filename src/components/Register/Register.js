@@ -146,7 +146,7 @@ class Register extends Component {
       lname: lastName,
       email,
       password,
-      cpassword: confirmPassword,
+      confirmPassword: confirmPassword,
     };
 
     this.setState({ validating: true, whiteLoader: true });

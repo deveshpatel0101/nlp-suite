@@ -11,7 +11,7 @@ import './ProjectCard.css';
 import ProjectDetails from '../ProjectDetails/ProjectDetails';
 import { deleteProject } from '../../controllers/projects';
 import { updateProject } from '../../redux/actions/projects';
-import { userLogOut } from '../../redux/actions/auth';
+import { userLogOut } from '../../redux/actions/user';
 
 class ProjectCard extends Component {
   constructor(props) {

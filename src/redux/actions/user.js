@@ -17,3 +17,9 @@ export const userSignUp = () => ({
 export const clearSignUp = () => ({
   type: 'CLEAR_SIGNUP',
 });
+
+export const updateUserProfile = (profile) => ({
+  type: 'UPDATE_PROFILE',
+  fname: profile.fname,
+  lname: profile.lname,
+});

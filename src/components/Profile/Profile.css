@@ -1,0 +1,21 @@
+.Profile-Container {
+  width: 95%;
+  height: calc(75vh - 25px - 64px);
+  margin: 25px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Profile-Form {
+  max-width: 400px;
+}
+
+.Profile-Container .First-Name,
+.Profile-Container .Last-Name {
+  width: 49%;
+}
+
+.Profile-Container .Update-Button {
+  margin-top: 10px;
+}

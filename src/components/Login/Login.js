@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Typography, TextField, Button, CircularProgress } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
@@ -7,7 +6,7 @@ import './Login.css';
 
 import { signin } from '../../controllers/signin';
 import { pushProject } from '../../redux/actions/projects';
-import { userLogin } from '../../redux/actions/auth';
+import { userLogin } from '../../redux/actions/user';
 
 const emailRegex = RegExp(
   /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
@@ -21,9 +20,7 @@ class Login extends Component {
       password: '',
       errorMessageEmail: '',
       errorMessagePassword: '',
-      redirect: false,
       validating: false,
-      whiteLoader: false,
     };
   }
 
@@ -68,17 +65,15 @@ class Login extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const isWrong = this.isDisabled();
 
-    if (!isWrong) {
+    if (!this.isDisabled()) {
       const data = { email: this.state.email, password: this.state.password };
-      this.setState({ validating: true, whiteLoader: true });
+      this.setState({ validating: true });
       signin(data).then((res) => {
         if (!res.error) {
           localStorage.setItem('jwt', res.jwtToken);
           this.props.dispatch(pushProject(res.results.projects));
           this.props.dispatch(userLogin({ ...res.results.userData }));
-          this.setState({ redirect: true });
         } else {
           if (res.errorType === 'email') {
             this.setState({ errorMessageEmail: res.errorMessage });
@@ -87,7 +82,7 @@ class Login extends Component {
           } else {
             alert('Interal Server error.');
           }
-          this.setState({ validating: false, whiteLoader: false });
+          this.setState({ validating: false });
         }
       });
     }
@@ -96,11 +91,7 @@ class Login extends Component {
   render() {
     const isDisabled = this.isDisabled();
 
-    if (this.state.redirect) {
-      return <Redirect to='/dashboard' />;
-    }
-
-    const { errorMessageEmail, errorMessagePassword, validating, whiteLoader } = this.state;
+    const { errorMessageEmail, errorMessagePassword, validating } = this.state;
 
     return (
       <div className='Signin-Container'>
@@ -152,7 +143,7 @@ class Login extends Component {
                     <CircularProgress
                       size={24}
                       thickness={5}
-                      style={whiteLoader ? { color: 'white' } : {}}
+                      style={{ color: 'white' }}
                     />
                     &nbsp; Trying to log you in
                   </Fragment>

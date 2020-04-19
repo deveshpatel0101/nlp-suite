@@ -9,14 +9,13 @@ import { LinearProgress } from '@material-ui/core';
 import { getProjects } from '../../controllers/projects';
 import { errorMessage } from '../../redux/actions/message';
 import { pushProject } from '../../redux/actions/projects';
-import { userLogOut, userLogin } from '../../redux/actions/auth';
+import { userLogOut, userLogin } from '../../redux/actions/user';
 
 const RequireAuth = (WrappedComponent, route) => {
   class Auth extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        redirect: false,
         validating: true,
       };
     }
@@ -30,24 +29,24 @@ const RequireAuth = (WrappedComponent, route) => {
           if (!error) {
             this.props.dispatch(pushProject(results.projects));
             this.props.dispatch(userLogin({ ...results.userData }));
-            this.setState({ validating: false });
           } else if (errorType === 'token' || errorType === 'server') {
             this.props.dispatch(userLogOut());
             if (errorType === 'token') {
-              this.props.dispatch(errorMessage('Please log in to continue'));
+              this.props.dispatch(errorMessage('Please log in to continue, token expired!'));
             } else {
               this.props.dispatch(errorMessage(errorMsg));
             }
-            this.setState({ redirect: true });
           }
+          this.setState({ validating: false });
         });
       } else {
-        this.setState({ validating: false, redirect: true });
+        this.setState({ validating: false });
       }
     }
 
     render() {
       // if user is authenticated and is on the login or register route, then redirect to dashboard
+      // Note: the "userLogin" dispatch action will activate following condition and no need to redirect explicity in the login route
       if (
         !this.state.validating &&
         this.props.auth &&
@@ -66,7 +65,11 @@ const RequireAuth = (WrappedComponent, route) => {
       }
 
       // if user is not authenticated and is on the login or register route, then render the component
-      if (this.state.redirect && !this.props.auth && (route === 'login' || route === 'register')) {
+      if (
+        !this.state.validating &&
+        !this.props.auth &&
+        (route === 'login' || route === 'register')
+      ) {
         return (
           <React.Fragment>
             <Navbar route={route} />
@@ -80,7 +83,7 @@ const RequireAuth = (WrappedComponent, route) => {
         <div className='Auth-Container'>
           <Navbar />
           {this.state.validating && <LinearProgress />}
-          {this.props.auth && <WrappedComponent />}
+          {!this.state.validating && this.props.auth && <WrappedComponent />}
         </div>
       );
     }

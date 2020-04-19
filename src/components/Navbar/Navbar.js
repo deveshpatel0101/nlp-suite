@@ -14,7 +14,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './Navbar.css';
 
-import { userLogOut } from '../../redux/actions/auth';
+import { userLogOut } from '../../redux/actions/user';
 
 class Navbar extends Component {
   constructor(props) {

@@ -8,6 +8,7 @@ import Footer from './components/Footer/Footer';
 import Register from './components/Register/Register';
 import Dashboard from './components/Dashboard/Dashboard';
 import DisplaySnackBar from './components/DisplaySnackBar/DisplaySnackBar';
+import Profile from './components/Profile/Profile';
 import CheckAuth from './components/Auth/Auth';
 
 class App extends Component {
@@ -29,6 +30,7 @@ class App extends Component {
             <Route path='/user/register' component={CheckAuth(Register, 'register')} exact={true} />
             <Route path='/user/login' component={CheckAuth(Login, 'login')} exact={true} />
             <Route path='/dashboard' component={CheckAuth(Dashboard)} exact={true} />
+            <Route path='/user/profile' component={CheckAuth(Profile)} exact={true} />
           </Switch>
         </BrowserRouter>
         <DisplaySnackBar />
