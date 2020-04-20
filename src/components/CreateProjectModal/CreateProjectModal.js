@@ -92,13 +92,8 @@ class CreateProjectModal extends Component {
         } else if (errorType === 'projects') {
           this.props.dispatch(errorMessage(res.errorMessage));
           this.props.handleModal();
-        } else if (errorType === 'token' || errorType === 'server') {
+        } else {
           this.props.dispatch(userLogOut());
-          if (errorType === 'token') {
-            this.props.dispatch(errorMessage('You need to login. Token expired.'));
-          } else {
-            this.props.dispatch(errorMessage(res.errorMessage));
-          }
         }
       }
     });

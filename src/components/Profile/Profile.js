@@ -4,8 +4,8 @@ import { TextField, CircularProgress, Button } from '@material-ui/core';
 import './Profile.css';
 
 import { updateProfile } from '../../controllers/profile';
-import { updateUserProfile } from '../../redux/actions/user';
-import { successMessage, errorMessage } from '../../redux/actions/message';
+import { updateUserProfile, userLogOut } from '../../redux/actions/user';
+import { successMessage } from '../../redux/actions/message';
 
 const passwordRegex = RegExp(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{4,}$/);
 
@@ -141,7 +141,7 @@ class Profile extends React.Component {
 
     this.setState({ validating: true });
     updateProfile(toSubmit).then((res) => {
-      const { error, errorType, errorMessage: errorMsg } = res;
+      const { error, errorType } = res;
       if (!error) {
         this.props.dispatch(updateUserProfile({ fname, lname }));
         this.props.dispatch(successMessage('Profile updated successfully.'));
@@ -152,12 +152,13 @@ class Profile extends React.Component {
           newPassword: '',
           confirmNewPassword: '',
         });
+        this.setState({ validating: false });
       } else if (errorType === 'oldPassword') {
         this.setState({ errorMessageOldPassword: 'Wrong Password' });
+        this.setState({ validating: false });
       } else {
-        this.props.dispatch(errorMessage(errorMsg));
+        this.props.dispatch(userLogOut());
       }
-      this.setState({ validating: false });
     });
   };
 

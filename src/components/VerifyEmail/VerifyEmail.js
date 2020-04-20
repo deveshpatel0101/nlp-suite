@@ -37,8 +37,6 @@ class VerifyEmail extends React.Component {
         );
       } else if (res.errorType === 'user') {
         this.props.dispatch(errorMessage('User does not exist.'));
-      } else {
-        this.props.dispatch(errorMessage(res.errorMessage));
       }
       this.setState({ validating: false, redirect: true });
     });

@@ -29,11 +29,10 @@ class ProjectCard extends Component {
 
   handleDelete = () => {
     deleteProject({ name: this.props.name }).then((resData) => {
-      const { error, errorType } = resData;
+      const { error } = resData;
       if (!error) {
         return this.props.dispatch(updateProject(this.props.name));
-      }
-      if (errorType === 'token') {
+      } else {
         return this.props.dispatch(userLogOut());
       }
     });
@@ -48,9 +47,7 @@ class ProjectCard extends Component {
           <CardContent>
             <div className='Project-Card-Container'>
               <div className='Project-Card-Header'>
-                <Typography variant='h6'>
-                  {name.toUpperCase()}
-                </Typography>
+                <Typography variant='h6'>{name.toUpperCase()}</Typography>
                 <div className='Project-Card-Icons'>
                   <div className='Project-Card-Edit-Icon'>
                     <Button size='small' title='Edit' variant='outlined' color='primary'>

@@ -24,11 +24,11 @@ const RequireAuth = (WrappedComponent, route) => {
         this.setState({ validating: false });
       } else if (localStorage.getItem('jwt')) {
         getProjects().then((data) => {
-          const { error, errorType, results } = data;
+          const { error, results } = data;
           if (!error) {
             this.props.dispatch(pushProject(results.projects));
             this.props.dispatch(userLogin({ ...results.userData }));
-          } else if (errorType === 'token' || errorType === 'server') {
+          } else {
             this.props.dispatch(userLogOut());            
           }
           this.setState({ validating: false });

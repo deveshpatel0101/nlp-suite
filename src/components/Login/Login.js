@@ -79,8 +79,6 @@ class Login extends Component {
             this.setState({ errorMessageEmail: res.errorMessage });
           } else if (res.errorType === 'password') {
             this.setState({ errorMessagePassword: res.errorMessage });
-          } else {
-            alert('Interal Server error.');
           }
           this.setState({ validating: false });
         }
@@ -140,11 +138,7 @@ class Login extends Component {
               >
                 {validating ? (
                   <Fragment>
-                    <CircularProgress
-                      size={24}
-                      thickness={5}
-                      style={{ color: 'white' }}
-                    />
+                    <CircularProgress size={24} thickness={5} style={{ color: 'white' }} />
                     &nbsp; Trying to log you in
                   </Fragment>
                 ) : (

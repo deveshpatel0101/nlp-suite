@@ -6,6 +6,7 @@ import './ProjectDetails.css';
 import { getByDay } from '../../controllers/time';
 import { getRequests } from '../../controllers/requests';
 import { getToken } from '../../controllers/tokens';
+import { userLogOut } from '../../redux/actions/user';
 
 class ProjectDetails extends React.Component {
   constructor(props) {
@@ -30,6 +31,11 @@ class ProjectDetails extends React.Component {
 
   componentDidMount() {
     getRequests(this.props.name).then((res) => {
+      if (res.error) {
+        this.props.dispatch(userLogOut());
+        return;
+      }
+
       for (let key in res) {
         const sorted = getByDay(res[key]['datasets'][0]['data']);
         res[key]['datasets'][0]['data'] = sorted.count;

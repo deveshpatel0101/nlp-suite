@@ -4,7 +4,8 @@ import { Button } from '@material-ui/core';
 import './Dashboard.css';
 
 import Projects from '../Projects/Projects';
-import { errorMessage, successMessage } from '../../redux/actions/message';
+import { successMessage } from '../../redux/actions/message';
+import { userLogOut } from '../../redux/actions/user';
 import { sendVerifyEmailLink } from '../../controllers/verifyEmail';
 
 class Dashboard extends Component {
@@ -13,7 +14,7 @@ class Dashboard extends Component {
       if (!res.error) {
         this.props.dispatch(successMessage('Verification email sent. Please check your inbox!'));
       } else {
-        this.props.dispatch(errorMessage(res.errorMessage));
+        this.props.dispatch(userLogOut());
       }
     });
   };
