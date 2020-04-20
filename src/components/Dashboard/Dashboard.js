@@ -5,11 +5,11 @@ import './Dashboard.css';
 
 import Projects from '../Projects/Projects';
 import { errorMessage, successMessage } from '../../redux/actions/message';
-import { verifyEmail } from '../../controllers/verifyEmail';
+import { sendVerifyEmailLink } from '../../controllers/verifyEmail';
 
 class Dashboard extends Component {
   handleVerifyEmail = () => {
-    verifyEmail().then((res) => {
+    sendVerifyEmailLink().then((res) => {
       if (!res.error) {
         this.props.dispatch(successMessage('Verification email sent. Please check your inbox!'));
       } else {

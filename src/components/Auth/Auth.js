@@ -7,7 +7,6 @@ import Navbar from '../Navbar/Navbar';
 import { LinearProgress } from '@material-ui/core';
 
 import { getProjects } from '../../controllers/projects';
-import { errorMessage } from '../../redux/actions/message';
 import { pushProject } from '../../redux/actions/projects';
 import { userLogOut, userLogin } from '../../redux/actions/user';
 
@@ -25,17 +24,12 @@ const RequireAuth = (WrappedComponent, route) => {
         this.setState({ validating: false });
       } else if (localStorage.getItem('jwt')) {
         getProjects().then((data) => {
-          const { error, errorType, errorMessage: errorMsg, results } = data;
+          const { error, errorType, results } = data;
           if (!error) {
             this.props.dispatch(pushProject(results.projects));
             this.props.dispatch(userLogin({ ...results.userData }));
           } else if (errorType === 'token' || errorType === 'server') {
-            this.props.dispatch(userLogOut());
-            if (errorType === 'token') {
-              this.props.dispatch(errorMessage('Please log in to continue, token expired!'));
-            } else {
-              this.props.dispatch(errorMessage(errorMsg));
-            }
+            this.props.dispatch(userLogOut());            
           }
           this.setState({ validating: false });
         });

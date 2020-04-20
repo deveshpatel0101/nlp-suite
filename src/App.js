@@ -10,6 +10,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 import DisplaySnackBar from './components/DisplaySnackBar/DisplaySnackBar';
 import Profile from './components/Profile/Profile';
 import CheckAuth from './components/Auth/Auth';
+import VerifyEmail from './components/VerifyEmail/VerifyEmail';
 
 class App extends Component {
   render() {
@@ -28,6 +29,7 @@ class App extends Component {
               exact={true}
             />
             <Route path='/user/register' component={CheckAuth(Register, 'register')} exact={true} />
+            <Route path='/user/verify' component={VerifyEmail} exact={true} />
             <Route path='/user/login' component={CheckAuth(Login, 'login')} exact={true} />
             <Route path='/dashboard' component={CheckAuth(Dashboard)} exact={true} />
             <Route path='/user/profile' component={CheckAuth(Profile)} exact={true} />
