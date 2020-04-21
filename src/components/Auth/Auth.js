@@ -10,7 +10,7 @@ import { getProjects } from '../../controllers/projects';
 import { pushProject } from '../../redux/actions/projects';
 import { userLogOut, userLogin } from '../../redux/actions/user';
 
-const RequireAuth = (WrappedComponent, route) => {
+const checkAuth = (WrappedComponent, route) => {
   class Auth extends React.Component {
     constructor(props) {
       super(props);
@@ -92,4 +92,4 @@ const RequireAuth = (WrappedComponent, route) => {
   return connect(mapStateToProps)(Auth);
 };
 
-export default RequireAuth;
+export default checkAuth;

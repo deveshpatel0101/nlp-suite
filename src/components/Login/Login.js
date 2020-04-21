@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { Typography, TextField, Button, CircularProgress } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import './Login.css';
@@ -149,7 +150,7 @@ class Login extends Component {
 
             <div>
               <Typography color='primary' className='Signin-Forget' variant='body2'>
-                Forget password?
+                <Link to='/user/resetPassword'>Forget password?</Link>
               </Typography>
             </div>
           </form>

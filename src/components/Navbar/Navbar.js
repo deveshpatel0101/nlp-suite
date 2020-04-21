@@ -79,13 +79,17 @@ class Navbar extends Component {
             )}
             {!this.props.auth && (
               <div className='Header-SignIn-SignUp-Buttons'>
-                {(this.props.route === 'register' || this.props.route === 'home') && (
+                {(this.props.route === 'register' ||
+                  this.props.route === 'home' ||
+                  this.props.show) && (
                   <Link to='/user/login'>
                     <Button size='small'>Login</Button>
                   </Link>
                 )}
 
-                {(this.props.route === 'login' || this.props.route === 'home') && (
+                {(this.props.route === 'login' ||
+                  this.props.route === 'home' ||
+                  this.props.show) && (
                   <Link to='/user/register'>
                     <Button size='small'>Register</Button>
                   </Link>
