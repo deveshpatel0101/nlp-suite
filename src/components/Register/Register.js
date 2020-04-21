@@ -8,12 +8,7 @@ import './Register.css';
 
 import { signup } from '../../controllers/signup';
 import { successMessage, errorMessage } from '../../redux/actions/message';
-
-const emailRegex = RegExp(
-  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
-);
-
-const passwordRegex = RegExp(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{4,}$/);
+import { emailRegex, passwordRegex } from '../../constants/regex';
 
 class Register extends Component {
   constructor(props) {

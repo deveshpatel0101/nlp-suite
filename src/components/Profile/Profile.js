@@ -6,8 +6,7 @@ import './Profile.css';
 import { updateProfile } from '../../controllers/profile';
 import { updateUserProfile, userLogOut } from '../../redux/actions/user';
 import { successMessage } from '../../redux/actions/message';
-
-const passwordRegex = RegExp(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{4,}$/);
+import { passwordRegex } from '../../constants/regex';
 
 class Profile extends React.Component {
   constructor(props) {

@@ -7,12 +7,7 @@ import { connect } from 'react-redux';
 import Navbar from '../Navbar/Navbar';
 import { resetPassword, resetPasswordLink } from '../../controllers/resetPassword';
 import { errorMessage, successMessage } from '../../redux/actions/message';
-
-const emailRegex = RegExp(
-  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
-);
-
-const passwordRegex = RegExp(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{4,}$/);
+import { emailRegex, passwordRegex } from '../../constants/regex';
 
 class ResetPassword extends Component {
   constructor(props) {
