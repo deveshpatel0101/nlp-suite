@@ -1,5 +1,5 @@
 export const resetPasswordLink = (body) => {
-  return fetch(`https://nlp-suite-backend.herokuapp.com/user/resetPassword`, {
+  return fetch(`http://localhost:8000/user/resetPassword`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -13,7 +13,7 @@ export const resetPasswordLink = (body) => {
 };
 
 export const resetPassword = (body, token) => {
-  return fetch(`https://nlp-suite-backend.herokuapp.com/user/resetPassword?token=${token}`, {
+  return fetch(`http://localhost:8000/user/resetPassword?token=${token}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',

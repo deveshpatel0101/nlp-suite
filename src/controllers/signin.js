@@ -1,5 +1,5 @@
 export const signin = (data) => {
-  return fetch('https://nlp-suite-backend.herokuapp.com/user/login', {
+  return fetch('http://localhost:8000/user/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

@@ -1,5 +1,5 @@
 export const getRequests = (name) => {
-  return fetch(`https://nlp-suite-backend.herokuapp.com/project/usage?name=${name}`, {
+  return fetch(`http://localhost:8000/project/usage?name=${name}`, {
     method: 'GET',
     headers: {
       Authorization: localStorage.getItem('jwt'),

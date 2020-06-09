@@ -1,5 +1,5 @@
 export const getProjects = () => {
-  return fetch(`https://nlp-suite-backend.herokuapp.com/user/project`, {
+  return fetch(`http://localhost:8000/user/project`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -13,7 +13,7 @@ export const getProjects = () => {
 };
 
 export const addProject = (data) => {
-  return fetch(`https://nlp-suite-backend.herokuapp.com/user/project`, {
+  return fetch(`http://localhost:8000/user/project`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -28,7 +28,7 @@ export const addProject = (data) => {
 };
 
 export const deleteProject = (data) => {
-  return fetch(`https://nlp-suite-backend.herokuapp.com/user/project`, {
+  return fetch(`http://localhost:8000/user/project`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',

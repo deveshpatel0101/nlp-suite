@@ -12,14 +12,14 @@ export const getByMonth = (data) => {
   let count = [];
   let temp = 0;
 
-  month.push(moment(window.parseInt(data[0]) * 1000).format('MMMM'));
+  month.push(moment(window.parseInt(data[0])).format('MMMM'));
   count[0] = 1;
 
   for (let i = 1; i < data.length; i++) {
-    if (moment(parseInt(data[i]) * 1000).format('MMMM') === month[temp]) {
+    if (moment(parseInt(data[i])).format('MMMM') === month[temp]) {
       count[temp]++;
     } else {
-      month.push(moment(parseInt(data[i]) * 1000).format('MMMM'));
+      month.push(moment(parseInt(data[i])).format('MMMM'));
       temp++;
       count[temp] = 1;
     }
@@ -39,14 +39,14 @@ export const getByDay = (data) => {
   let count = [];
   let temp = 0;
 
-  day.push(moment(window.parseInt(data[0]) * 1000).format('DD-MMM'));
+  day.push(moment(window.parseInt(data[0])).format('DD-MMM'));
   count[0] = 1;
 
   for (let i = 1; i < data.length; i++) {
-    if (moment(parseInt(data[i]) * 1000).format('DD-MMM') === day[temp]) {
+    if (moment(parseInt(data[i])).format('DD-MMM') === day[temp]) {
       count[temp]++;
     } else {
-      day.push(moment(parseInt(data[i]) * 1000).format('DD-MMM'));
+      day.push(moment(parseInt(data[i])).format('DD-MMM'));
       temp++;
       count[temp] = 1;
     }
@@ -67,14 +67,14 @@ export const getByYear = (data) => {
   let count = [];
   let temp = 0;
 
-  year.push(moment(window.parseInt(data[0]) * 1000).format('YYYY'));
+  year.push(moment(window.parseInt(data[0])).format('YYYY'));
   count[0] = 1;
 
   for (let i = 1; i < data.length; i++) {
-    if (moment(parseInt(data[i]) * 1000).format('YYYY') === year[temp]) {
+    if (moment(parseInt(data[i])).format('YYYY') === year[temp]) {
       count[temp]++;
     } else {
-      year.push(moment(parseInt(data[i]) * 1000).format('YYYY'));
+      year.push(moment(parseInt(data[i])).format('YYYY'));
       temp++;
       count[temp] = 1;
     }

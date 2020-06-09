@@ -1,5 +1,5 @@
 export const sendVerifyEmailLink = () => {
-  return fetch(`https://nlp-suite-backend.herokuapp.com/user/verify`, {
+  return fetch(`http://localhost:8000/user/verify`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -13,7 +13,7 @@ export const sendVerifyEmailLink = () => {
 };
 
 export const verifyEmail = (token) => {
-  return fetch(`https://nlp-suite-backend.herokuapp.com/user/verify?token=${token}`, {
+  return fetch(`http://localhost:8000/user/verify?token=${token}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',

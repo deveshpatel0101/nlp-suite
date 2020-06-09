@@ -1,5 +1,5 @@
 export const updateProfile = (data) => {
-  return fetch(`https://nlp-suite-backend.herokuapp.com/user/profile`, {
+  return fetch(`http://localhost:8000/user/profile`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',

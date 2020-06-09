@@ -1,5 +1,5 @@
 export const signup = (data) => {
-  return fetch('https://nlp-suite-backend.herokuapp.com/user/register', {
+  return fetch('http://localhost:8000/user/register', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
